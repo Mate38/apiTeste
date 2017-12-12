@@ -9,6 +9,5 @@ Route::resource('unidades', 'UnidadeController', [
 
 Route::resource('manifestacao', 'ManifestacaoController', [
     'only' => [
-        'index',
         'store',
     ]]);
