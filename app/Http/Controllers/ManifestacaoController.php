@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Manifestacao;
+//use Illuminate\Support\Facades\DB;
 
 class ManifestacaoController extends Controller
 {
@@ -22,9 +23,10 @@ class ManifestacaoController extends Controller
      */
     public function store(Request $request)
     {
-        //$nr = DB::select('select MAX(nrmanifestacao) from tbmanifestacao', [1]);
+        //$nr = DB::table('tbmanifestacao')->max('nrmanifestacao');
+        $nr = Manifestacao::max('nrmanifestacao');
 
-        $this->manifestacao->nrmanifestacao = '123456789';
+        $this->manifestacao->nrmanifestacao = $nr + 1;
 
         $this->manifestacao->dsbairro = $request->dsbairro;
         $this->manifestacao->dscomplemento = $request->dscomplemento;
