@@ -24,6 +24,8 @@ class ManifestacaoController extends Controller
     {
         //$nr = DB::select('select MAX(nrmanifestacao) from tbmanifestacao', [1]);
 
+        $this->manifestacao->nrmanifestacao = '123456789';
+
         $this->manifestacao->dsbairro = $request->dsbairro;
         $this->manifestacao->dscomplemento = $request->dscomplemento;
         $this->manifestacao->dslocalidade = $request->dslocalidade;
@@ -35,28 +37,29 @@ class ManifestacaoController extends Controller
         $this->manifestacao->nrcelular = $request->nrcelular;
         $this->manifestacao->nrcpfcnpj = $request->nrcpfcnpj;
         $this->manifestacao->nrendereco = $request->nrendereco;
-        $this->manifestacao->nrmanifestacao = '123456789';
         $this->manifestacao->nrpronac = $request->nrpronac;
         $this->manifestacao->nrtelefone = $request->nrtelefone;
-        $this->manifestacao->sisigilo = $request->sisigilo;
-        $this->manifestacao->stresposta = $request->stresposta;
-        $this->manifestacao->ststatusmanifestacao = $request->ststatusmanifestacao;
-        $this->manifestacao->ststatusocultacao = $request->ststatusocultacao;
         $this->manifestacao->tipopessoa = $request->tipopessoa;
-        $this->manifestacao->tpmanifestante = $request->tpmanifestante;
-        $this->manifestacao->tpraca = $request->tpraca;
-        $this->manifestacao->tpsexo = $request->tpsexo;
-        $this->manifestacao->idareaentrada = $request->idareaentrada;
-        $this->manifestacao->idmeioentrada = $request->idmeioentrada;
-        $this->manifestacao->idmeioresposta = $request->idmeioresposta;
-        $this->manifestacao->idpais = $request->idpais;
-        $this->manifestacao->idprioridade = $request->idprioridade;
         $this->manifestacao->idtipomanifestacao = $request->idtipomanifestacao;
+
+        $this->manifestacao->sisigilo = 1;
+        $this->manifestacao->stresposta = 1;
+        $this->manifestacao->ststatusmanifestacao = 1;
+        $this->manifestacao->ststatusocultacao = 2;
+        $this->manifestacao->tpmanifestante = 1;
+        $this->manifestacao->tpraca = 6;
+        $this->manifestacao->tpsexo = 3;
+        $this->manifestacao->idareaentrada = 1;
+        $this->manifestacao->idmeioentrada = 1;
+        $this->manifestacao->idmeioresposta = 1;
+        $this->manifestacao->idpais = 37;
+        $this->manifestacao->idprioridade = 1;
         
+        $this->manifestacao->save();
 
         return response()->json([
             'result' => 
-                $this->manifestacao->save()
+                $this->manifestacao
             ]);
     }
 
