@@ -44,6 +44,9 @@ class ManifestacaoController extends Controller
         $this->manifestacao->tipopessoa = $request->tipopessoa;
         $this->manifestacao->idtipomanifestacao = $request->idtipomanifestacao;
 
+        $this->manifestacao->latitude = $request->latitude;
+        $this->manifestacao->longitude = $request->longitude;
+
         $this->manifestacao->sisigilo = 1;
         $this->manifestacao->stresposta = 1;
         $this->manifestacao->ststatusmanifestacao = 1;
@@ -61,7 +64,7 @@ class ManifestacaoController extends Controller
 
         return response()->json([
             'result' => 
-                $this->manifestacao
+                $this->manifestacao->nrmanifestacao
             ]);
     }
 

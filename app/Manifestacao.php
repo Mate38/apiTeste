@@ -41,6 +41,8 @@ class Manifestacao extends Model
         'idmeioresposta',
         'idpais',
         'idprioridade',
-        'idtipomanifestacao',   
+        'idtipomanifestacao',
+        'latitude',
+        'longitude'   
     ];
 }
