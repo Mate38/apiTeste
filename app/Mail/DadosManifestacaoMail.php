@@ -16,14 +16,16 @@ class DadosManifestacaoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $inputs;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($inputs)
     {
-        //
+        $this->inputs = $inputs;
     }
 
     /**
@@ -33,7 +35,9 @@ class DadosManifestacaoMail extends Mailable
      */
     public function build()
     {
+        $nr = $this->inputs->nrmanifestacao;
+
         return $this->view('mails.dados')
-            ->subject('[Ouvidoria Videira] Confirmação de Recebimento de Manifestação: 2017000001');
+            ->subject("[Ouvidoria Videira] Confirmação de Recebimento de Manifestação: $nr");
     }
 }
