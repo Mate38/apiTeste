@@ -33,6 +33,7 @@ class DadosManifestacaoMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.dados');
+        return $this->view('mails.dados')
+            ->subject('[Ouvidoria Videira] Confirmação de Recebimento de Manifestação: 2017000001');
     }
 }
