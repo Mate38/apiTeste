@@ -35,9 +35,13 @@ class DadosManifestacaoMail extends Mailable
      */
     public function build()
     {
-        $nr = $this->inputs->nrmanifestacao;
+        $nr = $this->inputs['nrmanifestacao'];
 
         return $this->view('mails.dados')
-            ->subject("[Ouvidoria Videira] Confirmação de Recebimento de Manifestação: $nr");
+            ->subject("[Ouvidoria Videira] Confirmação de Recebimento de Manifestação: $nr")
+            ->with([
+                'nrmanifestacao' => $this->inputs['nrmanifestacao'],
+                'dssenha' => $this->inputs['dssenha']
+            ]);
     }
 }

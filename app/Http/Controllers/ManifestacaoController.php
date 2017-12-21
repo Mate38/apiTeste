@@ -64,7 +64,15 @@ class ManifestacaoController extends Controller
         
         $this->manifestacao->save();
 
-        Mail::to($this->manifestacao->eeemailusuario)->send(new DadosManifestacaoMail($this->manifestacao));
+        /*$inputs = [
+            'nrmanifestacao' => $this->manifestacao->nrmanifestacao,
+            'dssenha' => $this->manifestacao->dssenha
+        ];*/
+
+        Mail::to($this->manifestacao->eeemailusuario)->send(new DadosManifestacaoMail([
+            'nrmanifestacao' => $this->manifestacao['nrmanifestacao'],
+            'dssenha' => $this->manifestacao['dssenha']
+        ]));
 
         return response()->json([
             'result' => 
