@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Manifestacao;
 //use Illuminate\Support\Facades\DB;
+use App\Mail\DadosManifestacaoMail;
+use Mail;
 
 class ManifestacaoController extends Controller
 {
@@ -59,6 +61,8 @@ class ManifestacaoController extends Controller
         $this->manifestacao->idmeioresposta = 1;
         $this->manifestacao->idpais = 37;
         $this->manifestacao->idprioridade = 1;
+
+        Mail::to($this->manifestacao->eeemailusuario)->send(new DadosManifestacaoMail());
         
         $this->manifestacao->save();
 
