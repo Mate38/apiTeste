@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 /**
  * Limpar cache ao mecher nas configurações do e-mail
  * php artisan config:cache
+ * truncate -s 0 laravel.log
  */
 
 class DadosManifestacaoMail extends Mailable
@@ -37,11 +38,15 @@ class DadosManifestacaoMail extends Mailable
     {
         $nr = $this->inputs['nrmanifestacao'];
 
+        $data = date("d/m/Y");
+        //$data = 'teste data';
+
         return $this->view('mails.dados')
             ->subject("[Ouvidoria Videira] Confirmação de Recebimento de Manifestação: $nr")
             ->with([
                 'nrmanifestacao' => $this->inputs['nrmanifestacao'],
-                'dssenha' => $this->inputs['dssenha']
+                'dssenha' => $this->inputs['dssenha'],
+                'data' => $data
             ]);
     }
 }
